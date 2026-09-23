@@ -1,9 +1,11 @@
 import type { LayoutServerLoad } from './$types';
 
-export const load: LayoutServerLoad = async ({ locals: { supabase } }) => {
-	const { data: claims } = await supabase.auth.getClaims();
+export const load: LayoutServerLoad = async ({ locals: { safeGetSession }, cookies }) => {
+	const { session, user } = await safeGetSession();
 
 	return {
-		user: claims ?? null
+		session,
+		user,
+		cookies: cookies.getAll()
 	};
 };

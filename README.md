@@ -1,42 +1,35 @@
-# sv
+# Aruvia
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Kelola keuangan pribadi dan organisasi dengan lebih terstruktur.
 
-## Creating a project
+## Tech Stack
 
-If you're seeing this, you've probably already done this step. Congrats!
+- [SvelteKit](https://svelte.dev/docs/kit) — Full-stack framework
+- [Supabase](https://supabase.com) — Auth & database
+- [Tailwind CSS](https://tailwindcss.com) v4 — Styling
+- [shadcn-svelte](https://shadcn-svelte.com) — UI components
 
-```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
+## Getting Started
 
 ```sh
-# recreate this project
-npx sv@0.17.0 create --template minimal --types ts --add eslint prettier --install npm aruvia
-```
+# Install dependencies
+npm install
 
-## Developing
+# Copy environment variables
+cp .env.example .env
+# Fill in your Supabase project URL and anon key
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+# Start development server
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+## Scripts
 
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+| Command | Description |
+|---|---|
+| `npm run dev` | Start dev server |
+| `npm run build` | Build for production |
+| `npm run preview` | Preview production build |
+| `npm run check` | Run type checks |
+| `npm run lint` | Run linter |
+| `npm run format` | Format code |

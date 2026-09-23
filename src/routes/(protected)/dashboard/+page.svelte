@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { Button } from '$lib/components/ui/button';
+
 	let { data } = $props();
 </script>
 
@@ -19,23 +21,15 @@
 		</header>
 
 		<section class="rounded-xl border p-6">
-			<h2 class="font-medium">Authenticated</h2>
+			<h2 class="font-medium">
+				Selamat datang{data.user?.email ? `, ${data.user.email}` : ''}
+			</h2>
 
 			<p class="mt-2 text-sm text-muted-foreground">Kamu berhasil masuk ke Aruvia.</p>
-
-			<pre class="mt-4 overflow-auto rounded-lg bg-muted p-4 text-xs">{JSON.stringify(
-					data.claims,
-					null,
-					2
-				)}</pre>
 		</section>
-		<form method="POST" action="/auth/signout">
-			<button
-				type="submit"
-				class="rounded-lg border px-4 py-2 text-sm font-medium transition hover:bg-muted"
-			>
-				Keluar
-			</button>
+
+		<form method="POST" action="/auth/signout" class="mt-6">
+			<Button type="submit" variant="outline">Keluar</Button>
 		</form>
 	</main>
 </div>

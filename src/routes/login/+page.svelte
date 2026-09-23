@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { supabase } from '$lib/supabase/client';
 	import { Button } from '$lib/components/ui/button';
+
+	let { data } = $props();
 
 	let loading = $state(false);
 	let errorMessage = $state('');
@@ -9,7 +10,7 @@
 		loading = true;
 		errorMessage = '';
 
-		const { error } = await supabase.auth.signInWithOAuth({
+		const { error } = await data.supabase.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
 				redirectTo: `${window.location.origin}/auth/callback`
