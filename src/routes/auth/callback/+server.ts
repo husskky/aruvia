@@ -3,6 +3,8 @@ import type { RequestHandler } from './$types';
 
 export const GET: RequestHandler = async ({ url, locals: { supabase } }) => {
 	const code = url.searchParams.get('code');
+	const next = url.searchParams.get('next');
+	const destination = next === '/invitations/accept' ? next : '/dashboard';
 
 	if (!code) {
 		throw redirect(303, '/login?error=auth_callback_failed');
@@ -15,5 +17,5 @@ export const GET: RequestHandler = async ({ url, locals: { supabase } }) => {
 		throw redirect(303, '/login?error=auth_callback_failed');
 	}
 
-	throw redirect(303, '/dashboard');
+	throw redirect(303, destination);
 };

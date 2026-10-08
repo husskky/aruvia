@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { resolve } from '$app/paths';
 </script>
 
 <svelte:head>
@@ -10,10 +11,9 @@
 	<h1 class="text-6xl font-bold tracking-tight">{page.status}</h1>
 	<p class="mt-4 text-lg text-muted-foreground">{page.error?.message}</p>
 	<a
-		href="/"
+		href={resolve('/')}
 		class="mt-8 text-sm text-muted-foreground underline underline-offset-4 hover:text-foreground"
 	>
 		Kembali ke beranda
 	</a>
 </div>
-

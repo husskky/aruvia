@@ -9,11 +9,13 @@
 	async function signInWithGoogle() {
 		loading = true;
 		errorMessage = '';
+		const requestedNext = new URLSearchParams(window.location.search).get('next');
+		const next = requestedNext === '/invitations/accept' ? requestedNext : '/dashboard';
 
 		const { error } = await data.supabase.auth.signInWithOAuth({
 			provider: 'google',
 			options: {
-				redirectTo: `${window.location.origin}/auth/callback`
+				redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`
 			}
 		});
 
